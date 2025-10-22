@@ -8,9 +8,6 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
   sha256: ff6b82ee4533f6fd4474d833e693b44b984f58337173ee98ed76bce08721a636
-  patches:
-    - 0001-updated-cython-version.patch
-    - 0002-deprecated-python-threadinit.patch
 
 build:
   number: 0
@@ -21,14 +18,14 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython >=0.30                          # [build_platform != target_platform]
+    - cython >=3.0                           # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
   host:
     - python
     - pip
     - setuptools
-    - cython >=0.30
+    - cython >=3.0
     - libev  # [not win]
 
   run:
