@@ -1,19 +1,19 @@
 {% set name = "cassandra-driver" %}
-{% set version = "3.29.2" %}
+{% set version = "3.29.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cassandra-driver-{{ version }}.tar.gz
-  sha256: c4310a7d0457f51a63fb019d8ef501588c491141362b53097fbc62fa06559b7c
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: ff6b82ee4533f6fd4474d833e693b44b984f58337173ee98ed76bce08721a636
   patches:
     - 0001-updated-cython-version.patch
     - 0002-deprecated-python-threadinit.patch
 
 build:
-  number: 4
+  number: 0
   script: python setup.py build build_ext -I${PREFIX}/include -L${PREFIX}/lib install --single-version-externally-managed --record record.txt  # [not win]
   script: python setup.py install --no-cython --single-version-externally-managed --record record.txt  # [win]
 
@@ -33,7 +33,7 @@ requirements:
 
   run:
     - python
-    - geomet >=0.1,<0.3
+    - geomet >=1.1
     - numpy
     - libev  # [not win]
 
