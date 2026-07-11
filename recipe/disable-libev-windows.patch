@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 0af1e77..667364e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -49,7 +49,7 @@ include = ['cassandra', 'cassandra.io', 'cassandra.cqlengine', 'cassandra.graph'
+ 
+ [tool.cassandra-driver]
+ build-murmur3-extension = true
+-build-libev-extension = true
++build-libev-extension = false
+ build-cython-extensions = true
+ libev-includes = ["/usr/include/libev", "/usr/local/include", "/opt/local/include", "/usr/include"]
+ libev-libs = ["/usr/local/lib", "/opt/local/lib", "/usr/lib64"]
